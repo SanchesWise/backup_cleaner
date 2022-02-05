@@ -5,6 +5,7 @@ import os
 from datetime import datetime, timedelta
 
 directory = "/tank01/backups" #target dir
+# sample name is - backup.monitoring.12-08-2021-23-30.tar.gz
 
 
 class Cleaner:
