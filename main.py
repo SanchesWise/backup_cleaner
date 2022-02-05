@@ -4,7 +4,7 @@
 import os
 from datetime import datetime, timedelta
 
-directory = "/home/ccsfarm/test"#"/tank01/backups"
+directory = "/home/ccsfarm/test"  # "/tank01/backups"
 
 
 class Cleaner:
@@ -13,14 +13,13 @@ class Cleaner:
         self.files = []
         self.current_time = datetime.now()
         self.deadline = self.current_time - timedelta(days=7)  # date - days
-        self.del_count =0
+        self.del_count = 0
         self.save_count = 0
 
     def read(self):
         self.files = os.listdir(self.dir)
         self.files = list(filter(lambda x: x.endswith('.tar.gz'), self.files))
         print(self.files)
-
 
     def action(self):
         for filename in self.files:
@@ -29,10 +28,12 @@ class Cleaner:
             print(filename)
             if target < self.deadline:
                 print(f"{target},{self.current_time},{self.deadline}, delete")
-                self.del_count+=1
+                self.del_count += 1
             else:
                 print(f"{target},{self.current_time},{self.deadline}, save")
-                self.save_count+=1
+                self.save_count += 1
+
+
 example = Cleaner(directory)
 example.read()
 example.action()
