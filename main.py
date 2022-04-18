@@ -38,7 +38,7 @@ class Cleaner:
 
     def log(self):
         with open(os.path.join(os.path.abspath(self.dir), "backup_clean.log"), mode='a', encoding='utf8') as file:
-            file.write(f'Date {self.current_time} - saved: {example.save_count}, deleted: {example.del_count}')
+            file.write(f'Date {self.current_time} - saved: {example.save_count}, deleted: {example.del_count}\n')
 
 example = Cleaner(directory)
 example.read()
