@@ -5,7 +5,7 @@ import os
 from datetime import datetime, timedelta
 
 directory = "/tank01/backups" #target dir
-# sample name is - backup.monitoring.12-08-2021-23-30.tar.gz
+# sample name is - backup.full.monitoring......domain.my.12-08-2021-23-30.tar.gz
 
 
 class Cleaner:
@@ -25,7 +25,11 @@ class Cleaner:
     def action(self):
         for self.filename in self.files:
             target = self.filename.rsplit(sep='.')
-            target = datetime.strptime(target[2][:-6], "%d-%m-%Y")  # string to date
+            LenTarget = len(target)
+            try: 
+                target = datetime.strptime(target[LenTarget-3][:-6], "%d-%m-%Y")  # string to date
+            except:
+                pass
             if target < self.deadline and target.day != 20:
                 self.del_target()
                 self.del_count += 1
