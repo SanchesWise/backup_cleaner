@@ -28,6 +28,7 @@ class Cleaner:
             LenTarget = len(target)
             try: 
                 target = datetime.strptime(target[LenTarget-3][:-6], "%d-%m-%Y")  # string to date
+                #ловим блок с датой и отрезаем от него 6 символов времени
             except:
                 pass
             if target < self.deadline and target.day != 20:
